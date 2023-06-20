@@ -1,4 +1,4 @@
-package ru.dlabs.sas.example.jsso.config;
+package com.sdi.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

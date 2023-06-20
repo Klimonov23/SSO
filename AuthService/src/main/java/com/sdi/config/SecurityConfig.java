@@ -1,4 +1,4 @@
-package ru.dlabs.sas.example.jsso.config;
+package com.sdi.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +20,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        SocialConfigurer socialConfigurer = new SocialConfigurer();
+        http.apply(socialConfigurer);
         http.authorizeHttpRequests(authorize ->
                 authorize.anyRequest().authenticated()
         );

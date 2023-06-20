@@ -1,4 +1,4 @@
-package ru.dlabs.sas.example.jsso.config;
+package com.sdi.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

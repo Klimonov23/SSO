@@ -1,4 +1,4 @@
-package ru.dlabs.sas.example.jsso.utils;
+package com.sdi.utils;
 
 import com.nimbusds.jose.jwk.RSAKey;
 
