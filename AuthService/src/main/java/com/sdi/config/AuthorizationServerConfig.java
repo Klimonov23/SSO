@@ -1,4 +1,4 @@
-package ru.dlabs.sas.example.jsso.config;
+package com.sdi.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -61,14 +61,6 @@ public class AuthorizationServerConfig {
                         .build()
         );
     }
-
-
-//    @Bean
-//    public JWKSource<SecurityContext> jwkSource() {
-//        RSAKey rsaKey = JwkUtils.generateRsa();
-//        JWKSet jwkSet = new JWKSet(rsaKey);
-//        return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
-//    }
 
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {

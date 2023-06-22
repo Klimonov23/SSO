@@ -1,4 +1,4 @@
-package ru.dlabs.sas.example.jsso;
+package com.sdi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

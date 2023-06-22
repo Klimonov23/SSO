@@ -1,4 +1,4 @@
-package ru.dlabs.sas.example.jsso.config;
+package com.sdi.config;
 
 import lombok.Getter;
 import lombok.Setter;
