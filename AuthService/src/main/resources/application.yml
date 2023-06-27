@@ -19,3 +19,20 @@ spring:
             clientId: 9a86f169a6c97e5de840
             clientSecret: bc5c226ad9188b160dfbb92cbf0eb3184b6ed374
 
+#          yandex:
+#            clientId: d0282255be2245fba3aa5c26e75e0ab1
+#            clientSecret: 36492b46ab9b42cdbe335b5930935793
+          yandex:
+            provider: yandex
+            clientId: d0282255be2245fba3aa5c26e75e0ab1
+            clientSecret: 36492b46ab9b42cdbe335b5930935793
+            redirect-uri: http://localhost:7777/login/oauth2/code/yandex
+            authorizationGrantType: authorization_code
+            clientName: Yandex
+
+        provider:
+          yandex:
+            authorization-uri: https://oauth.yandex.ru/authorize
+            token-uri: https://oauth.yandex.ru/token
+            user-name-attribute: default_email
+            userInfoUri: https://login.yandex.ru/info
