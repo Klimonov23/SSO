@@ -19,7 +19,7 @@ spring:
         registration:
           github:
             clientId: 9a86f169a6c97e5de840
-            clientSecret: bc5c226ad9188b160dfbb92cbf0eb3184b6ed374
+            clientSecret: 872eafd2c649ed2e78d669e332edf7dc32566e91
 
 #          yandex:
 #            clientId: d0282255be2245fba3aa5c26e75e0ab1

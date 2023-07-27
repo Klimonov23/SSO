@@ -3,6 +3,7 @@ package com.sdi.type;
 import java.util.stream.Stream;
 
 public enum AuthProvider {
+
     GITHUB("github"),
     YANDEX("yandex");
 

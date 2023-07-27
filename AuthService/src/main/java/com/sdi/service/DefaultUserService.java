@@ -5,24 +5,35 @@ import com.sdi.dao.repository.UserRepository;
 import com.sdi.dto.AuthorizedUser;
 import com.sdi.exception.AuthException;
 import com.sdi.mapper.AuthorizedUserMapper;
+
 import com.sdi.type.AuthErrorCode;
 import com.sdi.type.AuthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+
+import com.sdi.service.UserService;
+import com.sdi.type.AuthErrorCode;
+import com.sdi.type.AuthProvider;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+
 
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
+
 @Service
 @RequiredArgsConstructor
 public class DefaultUserService implements UserService {
 
+
     @Value("${yandex-avatar-url}")
     private String yandexAvatarUrl;
+
     private final UserRepository userRepository;
 
     /**
@@ -32,7 +43,11 @@ public class DefaultUserService implements UserService {
     public UserEntity save(OAuth2User userDto, AuthProvider provider) {
         return switch (provider) {
             case GITHUB -> this.saveUserFromGithab(userDto);
+
             case YANDEX -> this.saveUserFromYandex(userDto);
+
+ 
+
         };
     }
 
@@ -111,6 +126,7 @@ public class DefaultUserService implements UserService {
         return userRepository.save(user);
     }
 
+
     /**
      * Метод описывающий создание/обновление UserEntity на основе OAuth2User полученного из провайдера Yandex
      */
@@ -147,4 +163,5 @@ public class DefaultUserService implements UserService {
     private String createYandexAvatarUrl(String avatarId) {
         return yandexAvatarUrl.replace("{avatarId}", avatarId);
     }
+
 }
