@@ -4,7 +4,6 @@ import com.sdi.type.AuthErrorCode;
 import lombok.Getter;
 import org.springframework.security.core.AuthenticationException;
 
-
 @Getter
 public class AuthException extends AuthenticationException {
 

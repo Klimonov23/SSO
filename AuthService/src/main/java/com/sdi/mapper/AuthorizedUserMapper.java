@@ -5,7 +5,6 @@ import com.sdi.dto.AuthorizedUser;
 import com.sdi.type.AuthProvider;
 import lombok.experimental.UtilityClass;
 
-
 import java.util.Collections;
 
 @UtilityClass
