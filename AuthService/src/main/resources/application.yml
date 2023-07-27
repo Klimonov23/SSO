@@ -8,6 +8,8 @@ logging:
     org.springframework.security.web.FilterChainProxy: DEBUG
 
 spring:
+  application:
+    name: j-sso
   security:
     oauth2:
       authorizationserver:
@@ -36,3 +38,5 @@ spring:
             token-uri: https://oauth.yandex.ru/token
             user-name-attribute: default_email
             userInfoUri: https://login.yandex.ru/info
+
+yandex-avatar-url: https://avatars.yandex.net/get-yapic/34/islands-retina-50
