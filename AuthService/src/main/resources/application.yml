@@ -11,7 +11,7 @@ spring:
   application:
     name: j-sso
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:database/db.changelog.yaml
     contexts: dev, prod
   datasource:
