@@ -1,4 +1,4 @@
-package com.sdi.config;
+package com.sdi.config.security;
 
 import lombok.Setter;
 import lombok.experimental.Accessors;

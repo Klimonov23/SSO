@@ -1,4 +1,4 @@
-package com.sdi.config;
+package com.sdi.config.security;
 
 import com.sdi.dto.AuthorizedUser;
 import com.sdi.dto.IntrospectionPrincipal;
@@ -63,30 +63,7 @@ public class AuthorizationServerConfig {
         return http.build();
     }
 
-    @Bean
-    public RegisteredClientRepository registeredClientRepository() {
-        return new InMemoryRegisteredClientRepository(
-                RegisteredClient.withId("test-client-id")
-                        .clientName("Test Client")
-                        .clientId("test-client")
-                        .clientSecret("{noop}test-client")
-                        .redirectUri("http://localhost:8080/code")
-                        .scope("read.scope")
-                        .scope("write.scope")
-                        .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-                        .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                        .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                        .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                        .tokenSettings(TokenSettings.builder()
-                                .accessTokenFormat(OAuth2TokenFormat.REFERENCE)
-                                .accessTokenTimeToLive(Duration.of(30, ChronoUnit.MINUTES))
-                                .refreshTokenTimeToLive(Duration.of(120, ChronoUnit.MINUTES))
-                                .reuseRefreshTokens(false)
-                                .authorizationCodeTimeToLive(Duration.of(30, ChronoUnit.SECONDS))
-                                .build())
-                        .build()
-        );
-    }
+
 
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {

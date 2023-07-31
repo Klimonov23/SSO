@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS sso.users
     last_updated_date     TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT current_timestamp,
     object_version_number INTEGER                     NOT NULL DEFAULT 0,
     constraint users_pk PRIMARY KEY (user_id)
-);
+    );
 
 COMMENT ON TABLE sso.users IS 'Пользователи';
 COMMENT ON COLUMN sso.users.user_id IS 'УИ пользователя';

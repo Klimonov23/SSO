@@ -11,7 +11,7 @@ spring:
   application:
     name: j-sso
   liquibase:
-    enabled: false
+    enabled: true
     change-log: classpath:database/db.changelog.yaml
     contexts: dev, prod
   datasource:
@@ -41,7 +41,7 @@ spring:
         registration:
           github:
             clientId: 9a86f169a6c97e5de840
-            clientSecret: bc5c226ad9188b160dfbb92cbf0eb3184b6ed374
+            clientSecret: abd0a434a219a1b9fb69ff2269f8e740ca2adfbe
 
 #          yandex:
 #            clientId: d0282255be2245fba3aa5c26e75e0ab1
