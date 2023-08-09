@@ -16,7 +16,6 @@ public abstract class TokenInfoOAuth2ClaimAccessor implements OAuth2TokenIntrosp
         return null;
     }
 
-    // добавим абстрактный метод, для получения объекта TokenInfoDto
     abstract TokenInfoDto getTokenInfo();
 
     @Override
