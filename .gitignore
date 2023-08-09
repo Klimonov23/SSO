@@ -33,3 +33,4 @@ build/
 mvnw
 ### VS Code ###
 .vscode/
+docker/

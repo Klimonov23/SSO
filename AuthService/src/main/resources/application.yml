@@ -4,12 +4,36 @@ server:
 logging:
   level:
     root: DEBUG
-    javax.management: ERROR
-    org.springframework.security.web.FilterChainProxy: DEBUG
+    org.springframework.security.web.FilterChainProxy: ERROR
+    logging.level.org.hibernate.SQL: INFO
+    com.zaxxer.hikari: ERROR
+    org.postgresql: ERROR
 
 spring:
   application:
     name: j-sso
+  liquibase:
+    enabled: false  # Указать true, если необходимо сделать накат скриптов БД при запуске приложения
+    change-log: classpath:database/db.changelog.yaml
+    contexts: prod, dev
+  datasource:
+    url: "jdbc:postgresql://localhost:5435/j-sso"
+    username: "user"
+    password: "user"
+    driver-class-name: "org.postgresql.Driver"
+    hikari:
+      connection-timeout: 30000
+      connection-test-query: select 1
+      maximum-pool-size: 10
+      minimum-idle: 10
+      initialization-fail-timeout: 1
+      leak-detection-threshold: 0
+      pool-name: "HikariPool-j-sso"
+      register-mbeans: true
+  jpa:
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
   security:
     oauth2:
       authorizationserver:
@@ -19,19 +43,18 @@ spring:
         registration:
           github:
             clientId: 9a86f169a6c97e5de840
-            clientSecret: 872eafd2c649ed2e78d669e332edf7dc32566e91
+            clientSecret: 52c66b720f69ec9d8cb13d54bffa892ef155855d
+          
 
-#          yandex:
-#            clientId: d0282255be2245fba3aa5c26e75e0ab1
-#            clientSecret: 36492b46ab9b42cdbe335b5930935793
+          
           yandex:
             provider: yandex
-            clientId: d0282255be2245fba3aa5c26e75e0ab1
-            clientSecret: 36492b46ab9b42cdbe335b5930935793
+            clientId: 4dad31d6d7fd4fe9b7c69b0fd5a83037
+            clientSecret: 5555a5a414944cc5b4b9dfaefa2968a7
             redirect-uri: http://localhost:7777/login/oauth2/code/yandex
             authorizationGrantType: authorization_code
             clientName: Yandex
-
+        
         provider:
           yandex:
             authorization-uri: https://oauth.yandex.ru/authorize
@@ -39,4 +62,20 @@ spring:
             user-name-attribute: default_email
             userInfoUri: https://login.yandex.ru/info
 
-yandex-avatar-url: https://avatars.yandex.net/get-yapic/34/islands-retina-50
+yandex-avatar-url: https://avatars.yandex.net/get-yapic/{avatarId}/islands-retina-50
+
+---
+spring:
+  config:
+    activate:
+      on-profile: production
+  liquibase:
+    contexts: prod
+
+---
+spring:
+  config:
+    activate:
+      on-profile: development
+  liquibase:
+    contexts: prod, dev
