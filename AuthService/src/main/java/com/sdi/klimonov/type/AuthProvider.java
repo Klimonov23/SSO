@@ -3,6 +3,7 @@ package com.sdi.klimonov.type;
 import java.util.stream.Stream;
 
 public enum AuthProvider {
+
     GITHUB("github"),
     YANDEX("yandex");
 
