@@ -36,7 +36,13 @@ public class SecurityConfig {
                 .passwordEncoder(passwordEncoder);
 
         http.authorizeHttpRequests(authorize ->
-                authorize.anyRequest().authenticated()
+                authorize.requestMatchers(
+                        "/v3/api-docs",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/swagger-config")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated()
         );
         return http.formLogin(withDefaults()).build();
     }

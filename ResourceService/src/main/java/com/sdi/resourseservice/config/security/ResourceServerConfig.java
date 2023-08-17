@@ -1,6 +1,6 @@
-package com.sdi.resourseservice.config;
+package com.sdi.resourseservice.config.security;
 
-import com.sdi.resourseservice.config.introspector.CustomSpringTokenIntrospection;
+import com.sdi.resourseservice.config.security.introspector.CustomSpringTokenIntrospection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

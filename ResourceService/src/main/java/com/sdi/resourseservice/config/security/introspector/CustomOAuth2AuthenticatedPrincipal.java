@@ -1,4 +1,4 @@
-package com.sdi.resourseservice.config.introspector;
+package com.sdi.resourseservice.config.security.introspector;
 
 import com.sdi.resourseservice.dto.AuthorizedUser;
 import com.sdi.resourseservice.dto.TokenInfoDto;
