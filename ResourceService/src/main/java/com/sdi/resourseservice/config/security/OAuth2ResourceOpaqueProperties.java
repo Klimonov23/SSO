@@ -1,4 +1,4 @@
-package com.sdi.resourseservice.config;
+package com.sdi.resourseservice.config.security;
 
 import lombok.Getter;
 import lombok.Setter;

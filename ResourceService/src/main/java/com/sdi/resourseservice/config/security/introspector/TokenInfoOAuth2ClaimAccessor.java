@@ -1,4 +1,4 @@
-package com.sdi.resourseservice.config.introspector;
+package com.sdi.resourseservice.config.security.introspector;
 
 import com.sdi.resourseservice.dto.TokenInfoDto;
 import org.springframework.security.oauth2.core.OAuth2TokenIntrospectionClaimAccessor;
@@ -16,7 +16,6 @@ public abstract class TokenInfoOAuth2ClaimAccessor implements OAuth2TokenIntrosp
         return null;
     }
 
-    // добавим абстрактный метод, для получения объекта TokenInfoDto
     abstract TokenInfoDto getTokenInfo();
 
     @Override

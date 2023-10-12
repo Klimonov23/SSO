@@ -1,5 +1,8 @@
 package com.sdi.klimonov.config.security;
 
+import com.sdi.klimonov.dto.AuthorizedUser;
+import com.sdi.klimonov.dto.IntrospectionPrincipal;
+import com.sdi.klimonov.dto.TokenInfoDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,9 +24,6 @@ import org.springframework.security.oauth2.server.authorization.settings.Authori
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.util.matcher.RequestMatcher;
-import com.sdi.klimonov.dto.AuthorizedUser;
-import com.sdi.klimonov.dto.IntrospectionPrincipal;
-import com.sdi.klimonov.dto.TokenInfoDto;
 
 import java.io.IOException;
 
@@ -47,7 +47,15 @@ public class AuthorizationServerConfig {
 
         RequestMatcher endpointsMatcher = authorizationServerConfigurer.getEndpointsMatcher();
         http.securityMatcher(endpointsMatcher)
-                .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
+                .authorizeHttpRequests(authorize ->
+                        authorize
+                                // endpoint-ы swagger вынесем из под security
+                                .requestMatchers(
+                                        "/v3/api-docs",
+                                        "/swagger-ui/**",
+                                        "/v3/api-docs/swagger-config"
+                                ).permitAll()
+                                .anyRequest().authenticated())
                 .csrf(csrf -> csrf.ignoringRequestMatchers(endpointsMatcher))
                 .exceptionHandling(exceptions -> exceptions.authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login")))
                 .apply(authorizationServerConfigurer);

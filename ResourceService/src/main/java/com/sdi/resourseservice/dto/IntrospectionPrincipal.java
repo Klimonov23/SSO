@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -18,11 +19,11 @@ public class IntrospectionPrincipal {
 
     private UUID id;
     private String firstName;
-    private String secondName;
+    private String lastName;
     private String middleName;
     private LocalDate birthday;
     private String avatarUrl;
     private String username;
     private String email;
-    private Collection<? extends GrantedAuthority> authorities;
+    private List<String> authorities;
 }

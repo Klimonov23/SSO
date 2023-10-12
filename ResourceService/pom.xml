@@ -11,15 +11,22 @@
     <groupId>com.sdi</groupId>
     <artifactId>ResourseService</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ResourseService</name>
-    <description>ResourseService</description>
+    <name>Тестовый Resource Server</name>
+    <description>Сервис для тестирования взаимодействия с SSO</description>
     <properties>
         <java.version>17</java.version>
+        <build-date>${maven.build.timestamp}</build-date>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,6 +60,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <finalName>${project.artifactId}</finalName>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -60,6 +68,19 @@
                         </exclude>
                     </excludes>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                        <configuration>
+                            <additionalProperties>
+                                <description>${project.description}</description>
+                                <build-date>${build-date}</build-date>
+                            </additionalProperties>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

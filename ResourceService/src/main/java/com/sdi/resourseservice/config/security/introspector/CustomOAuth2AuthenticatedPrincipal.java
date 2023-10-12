@@ -1,4 +1,4 @@
-package com.sdi.resourseservice.config.introspector;
+package com.sdi.resourseservice.config.security.introspector;
 
 import com.sdi.resourseservice.dto.AuthorizedUser;
 import com.sdi.resourseservice.dto.TokenInfoDto;
@@ -17,7 +17,6 @@ public class CustomOAuth2AuthenticatedPrincipal extends TokenInfoOAuth2ClaimAcce
     private final TokenInfoDto tokenInfo;
 
     public CustomOAuth2AuthenticatedPrincipal(TokenInfoDto tokenInfo) {
-        // tokenInfo.getPrincipal() - может быть пустым, например, когда access токен получен путем grant_type=client_credentials
         this.delegate = AuthorizedUser.build(tokenInfo.getPrincipal());
         this.tokenInfo = tokenInfo;
     }
@@ -33,9 +32,7 @@ public class CustomOAuth2AuthenticatedPrincipal extends TokenInfoOAuth2ClaimAcce
         return this.delegate.getAuthorities();
     }
 
-    /**
-     * Если пришедший токен вне контекста пользователя (Client Credential Grant Type), то возвращаем client_id
-     */
+
     public String getName() {
         if (this.delegate == null) {
             return this.tokenInfo.getClientId();

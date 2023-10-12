@@ -1,4 +1,4 @@
-package com.sdi.resourseservice.config.introspector;
+package com.sdi.resourseservice.config.security.introspector;
 
 import com.sdi.resourseservice.dto.TokenInfoDto;
 import lombok.extern.slf4j.Slf4j;
